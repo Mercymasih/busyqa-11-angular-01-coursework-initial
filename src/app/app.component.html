@@ -1,0 +1,40 @@
+<div class="container mt-5 w-50">
+  <img src="assets/img/busyqa.png" alt="BusyQA Logo">
+  <div class="alert alert-dismissible alert-success fade show mt-2" role="alert" *ngIf="added || deleted" >
+    <span *ngIf="added">Task added to the list</span>
+    <span *ngIf="deleted">Task deleted from the list</span>
+  </div>
+  <div class="jumbotron bg-white border border-primary mt-3 ">
+
+    <div class="input-group mb-3" style="height: 10px;">
+        <div class="input-group-prepend" >
+          <span class="input-group-text" >Task Name</span>
+        </div>
+        <input type="text" class="form-control" name="task" placeholder="Type in a Task" [(ngModel)]="task"required>
+        <div class="input-group-append">
+          <button type="button" class="btn btn-primary text-white" style="min-width: 100px;" (click)="onAddTask()">Add Task</button>
+        </div>
+    </div>   
+   
+  </div>
+  <table class="table table-striped table-hover mt-3">
+    <caption>To-do-list</caption>
+    <thead>
+      <tr>
+        <th class="text-left"scope="col">#</th>
+        <th class="text-center" scope="col">Task Name</th>
+        <th class="text-center" scope="col">#</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let task of tasks; let i= index" [ngClass]="i%2==0 ? 'text-primary' : 'text-success' ">
+        <td class="3"> {{ i + 1}}</td>
+        <td class="col-9"> {{ task | uppercase }}</td>
+        <td class="col-6"> 
+          <button class=" btn btn-danger " (click)="onDeleteTask(i)">Remove</button>
+        </td>
+      </tr>   
+    </tbody>
+  </table>
+</div>
