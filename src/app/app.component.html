@@ -10,7 +10,7 @@
         <div class="input-group-prepend" >
           <span class="input-group-text" >Task Name</span>
         </div>
-        <input type="text" class="form-control" name="task" placeholder="Type in a Task" [(ngModel)]="task"required>
+        <input type="text" class="form-control" name="task" placeholder="Type in a Task" [(ngModel)] = "task.name" required>
         <div class="input-group-append">
           <button type="button" class="btn btn-primary text-white" style="min-width: 100px;" (click)="onAddTask()">Add Task</button>
         </div>
@@ -30,7 +30,7 @@
     <tbody>
       <tr *ngFor="let task of tasks; let i= index" [ngClass]="i%2==0 ? 'text-primary' : 'text-success' ">
         <td class="3"> {{ i + 1}}</td>
-        <td class="col-9"> {{ task | uppercase }}</td>
+        <td class="col-9"> {{ task.name | uppercase }}</td>
         <td class="col-6"> 
           <button class=" btn btn-danger " (click)="onDeleteTask(i)">Remove</button>
         </td>
